@@ -7,34 +7,67 @@
     <style>
         body {
             margin: 0;
-            background-color: #ffffff;
+            background-color: #ffffff; /* 全白背景 */
             display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
+            flex-direction: column; /* 垂直排列元素 */
+            justify-content: center; /* 垂直居中 */
+            align-items: center; /* 水平居中 */
+            height: 100vh; /* 佔滿整個螢幕高度 */
+            overflow: hidden; /* 隱藏捲軸 */
+            font-family: Arial, sans-serif; /* 預設字體 */
         }
 
-        /* LOGO 容器設定 */
-        .logo-container {
-            max-width: 80%; /* 請在此調整圖片大小 */
-            height: auto;
-            cursor: pointer;
+        /* LOGO 區塊 */
+        .logo-section {
+            text-align: center;
+            margin-bottom: 20px; /* LOGO 和下方文字的間距 */
         }
 
-        .logo-container img {
-            display: block;
-            max-width: 100%;
+        .logo-section img {
+            max-width: 60%; /* 調整 LOGO 大小 */
             height: auto;
+            display: block; /* 確保圖片正確顯示 */
+            margin: 0 auto; /* 水平居中 */
             border: none;
+        }
+
+        .logo-section .sub-text {
+            font-size: 14px; /* 次級文字大小 */
+            color: #333333; /* 次級文字顏色 */
+            margin-top: 10px; /* 與 LOGO 的間距 */
+        }
+
+        /* 語系連結區塊 */
+        .language-links {
+            margin-top: 40px; /* 與上方 LOGO 區塊的間距 */
+            display: flex; /* 讓連結水平排列 */
+            gap: 40px; /* 連結之間的間距 */
+        }
+
+        .language-links a {
+            font-size: 20px; /* 連結文字大小 */
+            color: #333333; /* 連結文字顏色 */
+            text-decoration: none; /* 移除下劃線 */
+            font-weight: bold; /* 字體加粗 */
+        }
+
+        .language-links a:hover {
+            color: #000000; /* 懸停時顏色變深 */
         }
     </style>
 </head>
 <body>
-    <div class="logo-container">
+    <div class="logo-section">
         <a href="/gallery.html"> 
-            <img src="./CATSPAWLOGO.png" alt="conecolin Logo"> 
+            <img src="./CATSPAWLOGO.png" alt="CATSPAW Logo">
         </a>
+        <div class="sub-text">CoNeCoLin & NekolCChou</div>
+    </div>
+
+    <div class="language-links">
+        <a href="/zh-tw/gallery.html">中文</a> 
+        <a href="/en/gallery.html">English</a> 
+        <a href="/ja/gallery.html">日本語</a> 
     </div>
 </body>
 </html>
