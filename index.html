@@ -3,74 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>conecolin Art Gallery</title>
-    <style>
-        html {
-            /* 讓滾動條永遠存在，確保畫面可以滾動 */
-            overflow-y: scroll; 
-        }
+    <title>CATSPAW</title>
 
+    <style>
         body {
             margin: 0;
-            background-color: #ffffff; /* 全白背景 */
+            background: #ffffff;
+            font-family: Arial, sans-serif;
+            height: 100vh;
             display: flex;
-            flex-direction: column; /* 垂直排列元素 */
-            justify-content: center; /* 垂直居中 */
-            align-items: center; /* 水平居中 */
-            min-height: 100vh; /* 確保至少佔滿整個螢幕高度 */
-            font-family: Arial, sans-serif; /* 預設字體 */
-            padding: 40px 20px; /* 增加頂部和底部的間距 */
+            flex-direction: column;
+            align-items: center;
         }
 
-        /* LOGO 區塊 */
-        .logo-section {
+        /* ------------------------------
+           LOGO 區（偏上）
+        ------------------------------ */
+        .top-block {
+            margin-top: 18vh; /* 讓 LOGO 落在畫面上 18~20% 的位置 */
             text-align: center;
-            margin-bottom: 10px; /* 縮小 LOGO 和次級文字的間距 (最終版) */
         }
 
-        .logo-section img {
-            max-width: 50%; /* LOGO 最終大小 */
+        .top-block img {
+            width: 55%;
+            max-width: 600px;
             height: auto;
-            display: block; 
-            margin: 0 auto;
-            border: none;
         }
 
-        .logo-section .sub-text {
-            font-size: 16px; /* 放大次級文字 */
-            color: #333333; 
-            margin-top: 15px; /* 次級文字與 LOGO 的間距 (最終版) */
+        .sub-text {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #222;
+            letter-spacing: 4px;
         }
 
-        /* 語系連結區塊 */
-        .language-links {
-            margin-top: 30px; /* 縮小語系連結與次級文字的間距 (最終版) */
-            display: flex; 
-            gap: 30px; /* 連結之間的間距 */
+        /* ------------------------------
+           語言選單（在畫面中央偏下）
+        ------------------------------ */
+        .language-section {
+            position: absolute;
+            top: 60vh; /* 語言選單落在畫面偏下（與圖片一致） */
+            display: flex;
+            gap: 80px;  /* 語言之間的距離更大 */
         }
 
-        .language-links a {
-            font-size: 22px; /* 放大語系連結文字 */
-            color: #333333;
-            text-decoration: none; 
-            font-weight: bold;
+        .language-section a {
+            color: #111;
+            text-decoration: none;
+            font-size: 30px; /* 語言字體更大，接近圖片比例 */
+            font-weight: 500;
         }
 
-        .language-links a:hover {
-            color: #000000;
+        .language-section a:hover {
+            color: #000;
         }
     </style>
 </head>
+
 <body>
-    <div class="logo-section">
+    <div class="top-block">
         <img src="./CATSPAWLOGO.png" alt="CATSPAW Logo">
-        <div class="sub-text">CoNeCoLin & NekolCChou</div>
+        <div class="sub-text">CoNeCoLin & Nekocchou</div>
     </div>
 
-    <div class="language-links">
-        <a href="/zh-tw/gallery.html">中文</a> 
-        <a href="/en/gallery.html">English</a> 
-        <a href="/ja/gallery.html">日本語</a> 
+    <div class="language-section">
+        <a href="/ja/gallery.html">日本語</a>
+        <a href="/en/gallery.html">English</a>
+        <a href="/zh-tw/gallery.html">中文</a>
     </div>
 </body>
 </html>
