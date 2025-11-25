@@ -3,55 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CATSPAW</title>
+    <title>conecolin Art Gallery</title>
 
     <style>
+        html {
+            overflow-y: scroll;
+        }
+
         body {
             margin: 0;
-            background: #ffffff;
-            font-family: Arial, sans-serif;
-            height: 100vh;
+            background-color: #ffffff;
             display: flex;
             flex-direction: column;
+            justify-content: flex-start;
             align-items: center;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
         }
 
-        /* ------------------------------
-           LOGO 區（偏上）
-        ------------------------------ */
-        .top-block {
-            margin-top: 18vh; /* 讓 LOGO 落在畫面上 18~20% 的位置 */
+        /* LOGO 區塊 */
+        .logo-section {
             text-align: center;
+            margin-top: 120px; /* 讓 LOGO 比你原本更貼近圖片位置 */
         }
 
-        .top-block img {
-            width: 55%;
-            max-width: 600px;
+        .logo-section img {
+            max-width: 55%;
             height: auto;
+            display: block;
+            margin: 0 auto;
         }
 
         .sub-text {
-            margin-top: 20px;
-            font-size: 18px;
-            color: #222;
-            letter-spacing: 4px;
+            font-size: 17px;
+            margin-top: 18px;
+            color: #333;
+            letter-spacing: 2px;
         }
 
-        /* ------------------------------
-           語言選單（在畫面中央偏下）
-        ------------------------------ */
+        /* 語言選擇 */
         .language-section {
-            position: absolute;
-            top: 60vh; /* 語言選單落在畫面偏下（與圖片一致） */
+            margin-top: 90px; /* 與圖片構圖比例更接近 */
             display: flex;
-            gap: 80px;  /* 語言之間的距離更大 */
+            gap: 80px;
+            font-size: 28px;
         }
 
         .language-section a {
-            color: #111;
             text-decoration: none;
-            font-size: 30px; /* 語言字體更大，接近圖片比例 */
+            color: #222;
             font-weight: 500;
+        }
+
+        /* English 單独下移 */
+        .language-section a.english {
+            margin-top: 16px; /* ← 你可以微調 10–30px */
         }
 
         .language-section a:hover {
@@ -61,15 +67,16 @@
 </head>
 
 <body>
-    <div class="top-block">
+    <div class="logo-section">
         <img src="./CATSPAWLOGO.png" alt="CATSPAW Logo">
-        <div class="sub-text">CoNeCoLin & Nekocchou</div>
+        <div class="sub-text">CoNeCoLin & NekocChou</div>
     </div>
 
     <div class="language-section">
         <a href="/ja/gallery.html">日本語</a>
-        <a href="/en/gallery.html">English</a>
+        <a href="/en/gallery.html" class="english">English</a>
         <a href="/zh-tw/gallery.html">中文</a>
     </div>
+
 </body>
 </html>
