@@ -1,82 +1,102 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>conecolin Art Gallery</title>
-
-    <style>
-        html {
-            overflow-y: scroll;
-        }
-
-        body {
-            margin: 0;
-            background-color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            min-height: 100vh;
-            font-family: Arial, sans-serif;
-        }
-
-        /* LOGO 區塊 */
-        .logo-section {
-            text-align: center;
-            margin-top: 120px; /* 讓 LOGO 比你原本更貼近圖片位置 */
-        }
-
-        .logo-section img {
-            max-width: 55%;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-        }
-
-        .sub-text {
-            font-size: 17px;
-            margin-top: 18px;
-            color: #333;
-            letter-spacing: 2px;
-        }
-
-        /* 語言選擇 */
-        .language-section {
-            margin-top: 90px; /* 與圖片構圖比例更接近 */
-            display: flex;
-            gap: 80px;
-            font-size: 28px;
-        }
-
-        .language-section a {
-            text-decoration: none;
-            color: #222;
-            font-weight: 500;
-        }
-
-        /* English 單独下移 */
-        .language-section a.english {
-            margin-top: 10px; /* ← 你可以微調 10–30px */
-        }
-
-        .language-section a:hover {
-            color: #000;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zimaoling — Portfolio</title>
+  <style>
+    :root {
+      --bg: #fafafa;
+      --text: #222;
+      --accent: #cba6f7;
+      --max-width: 960px;
+    }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: sans-serif;
+      line-height: 1.6;
+    }
+    header {
+      padding: 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    nav a {
+      margin-left: 1rem;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+    }
+    main {
+      max-width: var(--max-width);
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .section {
+      margin-bottom: 3rem;
+    }
+    .title {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+    .grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+    @media (min-width: 700px) {
+      .grid-2 { grid-template-columns: repeat(2, 1fr); }
+      .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    footer {
+      padding: 2rem;
+      text-align: center;
+      opacity: 0.6;
+    }
+  </style>
 </head>
-
 <body>
-    <div class="logo-section">
-        <img src="./CATSPAWLOGO.png" alt="CATSPAW Logo">
-        <div class="sub-text">CoNeCoLin & NekocChou</div>
-    </div>
+  <header>
+    <div class="logo">Zimaoling</div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#works">Works</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-    <div class="language-section">
-        <a href="/ja/gallery.html">日本語</a>
-        <a href="/en/gallery.html" class="english">English</a>
-        <a href="/zh-tw/gallery.html">中文</a>
-    </div>
+  <main>
+    <section id="about" class="section">
+      <div class="title">About</div>
+      <p>Illustrator / Writer. Building a quiet space for stories, lines, and soft language.</p>
+    </section>
 
+    <section id="works" class="section">
+      <div class="title">Works</div>
+      <div class="grid grid-3">
+        <div class="card">Artwork 1</div>
+        <div class="card">Artwork 2</div>
+        <div class="card">Artwork 3</div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="title">Contact</div>
+      <p>Email: yourname@example.com</p>
+    </section>
+  </main>
+
+  <footer>© Zimaoling</footer>
 </body>
 </html>
