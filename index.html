@@ -12,47 +12,48 @@
             flex-direction: column; /* 垂直排列元素 */
             justify-content: center; /* 垂直居中 */
             align-items: center; /* 水平居中 */
-            height: 100vh; /* 佔滿整個螢幕高度 */
-            overflow: hidden; /* 隱藏捲軸 */
+            min-height: 100vh; /* 確保至少佔滿整個螢幕高度 */
+            /* 移除 overflow: hidden，讓畫面可以滾動 */
             font-family: Arial, sans-serif; /* 預設字體 */
+            padding: 40px 20px; /* 增加頂部和底部的間距，避免內容緊貼邊緣 */
         }
 
         /* LOGO 區塊 */
         .logo-section {
             text-align: center;
-            margin-bottom: 30px; /* LOGO 和下方文字的間距 */
+            margin-bottom: 20px; /* 縮小 LOGO 和次級文字的間距 (從 30px 改回 20px) */
         }
 
         .logo-section img {
-            max-width: 60%; /* 最終確定 LOGO 大小為 60% */
+            max-width: 50%; /* 縮小 LOGO 圖片 (從 60% 改為 50%) */
             height: auto;
-            display: block; /* 確保圖片正確顯示 */
-            margin: 0 auto; /* 水平居中 */
+            display: block; 
+            margin: 0 auto;
             border: none;
         }
 
         .logo-section .sub-text {
-            font-size: 14px; /* 次級文字大小 */
-            color: #333333; /* 次級文字顏色 */
-            margin-top: 10px; /* 與 LOGO 的間距 */
+            font-size: 16px; /* 放大次級文字 (從 14px 改為 16px) */
+            color: #333333; 
+            margin-top: 15px; /* 增加次級文字與 LOGO 的間距 (從 10px 改為 15px) */
         }
 
         /* 語系連結區塊 */
         .language-links {
-            margin-top: 120px; /* 與上方 LOGO 區塊的間距 (最終版) */
-            display: flex; /* 讓連結水平排列 */
-            gap: 40px; /* 連結之間的間距 */
+            margin-top: 50px; /* 大幅縮小與上方區塊的間距 (從 120px 改為 50px) */
+            display: flex; 
+            gap: 30px; /* 縮小連結之間的間距 (從 40px 改為 30px) */
         }
 
         .language-links a {
-            font-size: 20px; /* 連結文字大小 */
-            color: #333333; /* 連結文字顏色 */
-            text-decoration: none; /* 移除下劃線 */
-            font-weight: bold; /* 字體加粗 */
+            font-size: 22px; /* 放大語系連結文字 (從 20px 改為 22px) */
+            color: #333333;
+            text-decoration: none; 
+            font-weight: bold;
         }
 
         .language-links a:hover {
-            color: #000000; /* 懸停時顏色變深 */
+            color: #000000;
         }
     </style>
 </head>
