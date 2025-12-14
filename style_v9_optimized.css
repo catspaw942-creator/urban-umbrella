@@ -339,20 +339,3 @@ img {
     margin: 0 auto; 
     padding: 0; 
 }
-/* ===================================================================
- * 【Z. 最終字體強制覆寫區 (針對 Viewport 修正後，確保字體放大)】
- * =================================================================== */
-
-@media screen and (max-width: 768px) {
-    /* 確保導航欄字體能被放大 */
-    body nav a {
-        font-size: 20px !important; 
-    }
-
-    /* 確保內文能被放大 */
-    body .article-content, 
-    body p { 
-        font-size: 18px !important; 
-        line-height: 1.6 !important;
-    }
-}
