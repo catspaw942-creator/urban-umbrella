@@ -76,7 +76,7 @@ h1, h2, h3 {
 /* H1 樣式 (所有頁面統一 - 移除冗餘的 body class 選擇器) */
 h1 {
     margin: 0;
-    font-size: 36px;
+    font-size: 30px;
     font-weight: 600;
 }
 
@@ -90,7 +90,7 @@ body.index-page #logo {
 /* 列表頁/詳細頁的 H2 樣式 (副標題) */
 body.list-page h2, body.detail-page h2, h2.page-subtitle { 
     margin: 5px 0 20px 0;
-    font-size: 20px;
+    font-size: 18px;
     color: #666;
     font-weight: 600;
     letter-spacing: 3px;
@@ -187,10 +187,10 @@ body.list-page .card-tags {
 /* --- 文章內容區塊 (通用) --- */
 .article-content {
     max-width: 800px;
-    margin: 25px auto 60px auto;
+    margin: 20px auto 60px auto;
     line-height: 1.8;
     text-align: left;
-    font-size: 20px; /* <--- 最終修正內文基礎字體 */
+    font-size: 24px; /* <--- 最終修正內文基礎字體 */
     color: #333;
 }
 .article-content h1, .article-content h2, .article-content h3 {
@@ -314,7 +314,7 @@ body.is-leaving header, body.is-leaving main {
 @media (max-width: 768px) {
     body.list-page main { column-count: 3; padding: 0 15px; }
     body.detail-page .main-img, body.detail-page video.main-img { top: -20px; }
-    body.detail-page .article-content { font-size: 18px; } /* <--- 最終修正手機內文基礎字體 */
+    body.detail-page .article-content { font-size: 24px; } /* <--- 最終修正手機內文基礎字體 */
     .navigation-links { max-width: 100%; padding: 0 15px; }
     /* RWD 調整浮動按鈕位置 */
     body.detail-page .nav-btn { width: 40px; height: 40px; line-height: 40px; font-size: 20px; }
@@ -323,7 +323,7 @@ body.is-leaving header, body.is-leaving main {
 }
 @media (max-width: 576px) {
     body.list-page main { column-count: 2; }
-    nav a { font-size: 20px; padding: 8px 10px; margin: 0 5px; } /* <--- 最終修正手機導航字體 */
+    nav a { font-size: 26px; padding: 8px 10px; margin: 0 5px; } /* <--- 最終修正手機導航字體 */
     /* 在極小螢幕上可以選擇隱藏浮動按鈕，或進一步縮小 */
     body.detail-page .nav-btn { width: 35px; height: 35px; line-height: 35px; font-size: 18px; }
 }
