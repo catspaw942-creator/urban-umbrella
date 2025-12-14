@@ -361,6 +361,6 @@ img, video, iframe, embed, object {
     
     /* 標題 H2/H3 也要同步放大 */
     body h2, body h3 {
-        font-size: 30px !important;
+        font-size: 40px !important;
     }
 }
