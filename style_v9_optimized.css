@@ -315,12 +315,12 @@ body.is-leaving header, body.is-leaving main {
     /* --- 內文和文章字體強制放大 --- */
     body, 
     body.detail-page .article-content { 
-        font-size: 24px !important; /* 強制所有內文字體放大到 18px */
+        font-size: 30px !important; /* 強制所有內文字體放大到 18px */
     }
     
     /* --- 導航欄字體強制放大 (nav a) --- */
     nav a { 
-        font-size: 20px !important; /* 強制導航欄字體放大到 20px */
+        font-size: 50px !important; /* 強制導航欄字體放大到 20px */
     }
 
     /* 保持您原本的其他設定不變 */
