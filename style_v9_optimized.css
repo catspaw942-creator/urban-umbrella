@@ -323,9 +323,12 @@ body.is-leaving header, body.is-leaving main {
 }
 @media (max-width: 576px) {
     body.list-page main { column-count: 2; }
-    nav a { font-size: 20px; padding: 8px 10px; margin: 0 5px; }
-    /* 在極小螢幕上可以選擇隱藏浮動按鈕，或進一步縮小 */
-    body.detail-page .nav-btn { width: 35px; height: 35px; line-height: 35px; font-size: 18px; }
+    nav a { 
+        font-size: 20px !important; /* 強制 nav a 在手機上維持 20px */
+        padding: 8px 10px; 
+        margin: 0 5px; 
+    }
+    /* ... 其他設定 ... */
 }
 /* 專門為圖片設定的響應式樣式 */
 
