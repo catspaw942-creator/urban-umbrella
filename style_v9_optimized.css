@@ -190,7 +190,7 @@ body.list-page .card-tags {
     margin: 20px auto 60px auto;
     line-height: 1.8;
     text-align: left;
-    font-size: 25px; 
+    font-size: 17px; 
     color: #333;
 }
 .article-content h1, .article-content h2, .article-content h3 {
@@ -314,7 +314,7 @@ body.is-leaving header, body.is-leaving main {
 @media (max-width: 768px) {
     body.list-page main { column-count: 3; padding: 0 15px; }
     body.detail-page .main-img, body.detail-page video.main-img { top: -20px; }
-    body.detail-page .article-content { font-size: 18px; }
+    body.detail-page .article-content { font-size: 16px; }
     .navigation-links { max-width: 100%; padding: 0 15px; }
     /* RWD 調整浮動按鈕位置 */
     body.detail-page .nav-btn { width: 40px; height: 40px; line-height: 40px; font-size: 20px; }
@@ -323,12 +323,9 @@ body.is-leaving header, body.is-leaving main {
 }
 @media (max-width: 576px) {
     body.list-page main { column-count: 2; }
-    nav a { 
-        font-size: 20px !important; /* 強制 nav a 在手機上維持 20px */
-        padding: 8px 10px; 
-        margin: 0 5px; 
-    }
-    /* ... 其他設定 ... */
+    nav a { font-size: 16px; padding: 8px 10px; margin: 0 5px; }
+    /* 在極小螢幕上可以選擇隱藏浮動按鈕，或進一步縮小 */
+    body.detail-page .nav-btn { width: 35px; height: 35px; line-height: 35px; font-size: 18px; }
 }
 /* 專門為圖片設定的響應式樣式 */
 
