@@ -314,7 +314,7 @@ body.is-leaving header, body.is-leaving main {
 @media (max-width: 768px) {
     body.list-page main { column-count: 3; padding: 0 15px; }
     body.detail-page .main-img, body.detail-page video.main-img { top: -20px; }
-    body.detail-page .article-content { font-size: 16px; }
+    body.detail-page .article-content { font-size: 18px; }
     .navigation-links { max-width: 100%; padding: 0 15px; }
     /* RWD 調整浮動按鈕位置 */
     body.detail-page .nav-btn { width: 40px; height: 40px; line-height: 40px; font-size: 20px; }
@@ -323,7 +323,7 @@ body.is-leaving header, body.is-leaving main {
 }
 @media (max-width: 576px) {
     body.list-page main { column-count: 2; }
-    nav a { font-size: 16px; padding: 8px 10px; margin: 0 5px; }
+    nav a { font-size: 20px; padding: 8px 10px; margin: 0 5px; }
     /* 在極小螢幕上可以選擇隱藏浮動按鈕，或進一步縮小 */
     body.detail-page .nav-btn { width: 35px; height: 35px; line-height: 35px; font-size: 18px; }
 }
@@ -354,18 +354,7 @@ img {
     margin: 0 auto; 
     padding: 0; 
 }
-/* 專門為手機或小螢幕裝置設定的樣式 */
-@media screen and (max-width: 768px) {
-    /* 讓整個網頁的基本字體大小變大 */
-    body {
-        font-size: 25px !important; /* 嘗試將基本字體大小設為 16 像素 */
-    }
 
-    /* 如果網站菜單文字太小，也可以加大 */
-    .nav a {
-        font-size: 1.5em !important; 
-    }
-}
 /* --- 最終強制影片和 iFrame 及其容器的寬度適應螢幕 --- */
 div, video, iframe, embed, object { 
     max-width: 100% !important; /* 強制寬度不超過 100% */
