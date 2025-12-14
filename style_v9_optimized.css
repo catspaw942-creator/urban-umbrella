@@ -354,3 +354,15 @@ img {
     margin: 0 auto; 
     padding: 0; 
 }
+/* 專門為手機或小螢幕裝置設定的樣式 */
+@media screen and (max-width: 768px) {
+    /* 讓整個網頁的基本字體大小變大 */
+    body {
+        font-size: 16px !important; /* 嘗試將基本字體大小設為 16 像素 */
+    }
+
+    /* 如果網站菜單文字太小，也可以加大 */
+    .nav a {
+        font-size: 1.1em !important; 
+    }
+}
