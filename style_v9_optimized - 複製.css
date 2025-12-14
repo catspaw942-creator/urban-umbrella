@@ -1,0 +1,356 @@
+/*
+ * ===================================================================
+ * style_v9_optimized.css - 終極標準化版本 (最終修復版 - 恢復浮動導航按鈕)
+ * ===================================================================
+ */
+
+/* 遵循規範：新增「防呆鎖」，防止頁面縮放不一致 */
+html, body {
+    width: 100%;
+}
+
+/* --- 引入 Google Fonts 網路字型 --- */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600&display=swap');
+
+/* ===================================================================
+ * 【A. 通用樣式】
+ * =================================================================== */
+
+body {
+    font-family: 'Noto Sans TC', sans-serif;
+    text-align: center;
+    background: #f9f8f5;
+    margin: 0;
+    color: #333;
+}
+
+header {
+    padding: 30px 20px;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+}
+
+/* ===== LOGO 基礎規則（所有頁面） ===== */
+#logo {
+    display: block;
+    margin: 0 auto;
+    width: 120px;
+    height: auto;
+    transition: all 0.3s ease-in-out;
+}
+
+footer {
+    padding: 20px;
+    font-size: 16px;
+    color: #666;
+}
+
+footer a {
+    color: #0066cc;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+footer a:hover {
+    color: #004c99;
+}
+
+.copyright {
+    font-size: 10px;
+    line-height: 2;
+    color: #555;
+    text-align: center;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+/* --- H1/H2/H3 通用襯線字體 --- */
+h1, h2, h3 {
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 600;
+}
+
+/* ===================================================================
+ * 【B. HEADER 樣式 - 差異控制】
+ * =================================================================== */
+
+/* H1 樣式 (所有頁面統一 - 移除冗餘的 body class 選擇器) */
+h1 {
+    margin: 0;
+    font-size: 36px;
+    font-weight: 600;
+}
+
+/* ===== 首頁型頁面（主頁 + 關於我們）尺寸控制 ===== */
+body.index-page #logo {
+    width: 640px;
+    max-width: 90%;
+    margin: 20px auto 10px;
+}
+
+/* 列表頁/詳細頁的 H2 樣式 (副標題) */
+body.list-page h2, body.detail-page h2, h2.page-subtitle { 
+    margin: 5px 0 20px 0;
+    font-size: 20px;
+    color: #666;
+    font-weight: 600;
+    letter-spacing: 3px;
+}
+
+/* --- 導航連結通用樣式 (統一) --- */
+nav a {
+    color: #585858;
+    font-weight: normal;
+    font-size: 20px;
+    margin: 0 15px;
+    transition: all 0.5s; 
+    text-decoration: none;
+    border-bottom: none; 
+    padding-bottom: 5px;
+    background-color: transparent; 
+}
+
+/* --- 導航 Hover/Active 樣式 (統一) --- */
+nav a:hover {
+    color: #000;
+    transform: scale(1.03); 
+}
+/* 當前頁面 (Active) 突出顯示樣式 */
+nav a.active-cat {
+    color: #000;
+    font-weight: bold; 
+    border-bottom: 2px solid #000; 
+    padding-bottom: 3px; 
+}
+
+
+/* ===================================================================
+ * 【C. 內容區樣式 - MAIN】
+ * =================================================================== */
+
+main {
+    padding: 20px;
+}
+
+/* 確保 main 區塊內的所有連結都不帶預設下劃線 (解決縮圖底線問題) */
+main a {
+    text-decoration: none; 
+}
+
+/* --- 列表頁瀑布流 (通用) --- */
+body.list-page main {
+    padding: 0 80px;      
+    column-gap: 15px;
+    column-count: 6;      
+}
+
+body.list-page .card {
+    display: inline-block;
+    width: 100%;
+    margin: 0 0 15px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s; 
+    border: 2px solid #fff;
+    background-color: #fff;
+    position: relative; 
+}
+body.list-page .card:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+}
+body.list-page .card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px 8px 0 0;
+}
+
+/* --- 列表頁卡片描述文字樣式 (新增/修改) --- */
+body.list-page .card-description {
+    padding: 10px 15px;
+    font-size: 15px;
+    color: #000 !important; /* 強制設定為黑色，確保生效 */
+    text-align: left;
+    font-weight: 500;
+}
+
+body.list-page .card-tags { 
+    position: absolute; top: 10px; right: 10px; display: flex; flex-direction: column; gap: 5px; z-index: 5; 
+}
+.media-tag { 
+    background: rgba(0, 0, 0, 0.7); color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em; font-weight: bold; white-space: nowrap;
+}
+.video-tag { background: #dc3545; } 
+.gallery-tag { background: #007bff; } 
+
+/* --- 文章內容區塊 (通用) --- */
+.article-content {
+    max-width: 800px;
+    margin: 20px auto 60px auto;
+    line-height: 1.8;
+    text-align: left;
+    font-size: 17px; 
+    color: #333;
+}
+.article-content h1, .article-content h2, .article-content h3 {
+     font-family: 'Noto Serif TC', serif;
+     font-weight: 600;
+}
+
+
+/* --- 詳細頁主媒體和輔助媒體樣式 (通用) --- */
+body.detail-page .main-img,
+body.detail-page video.main-img { 
+  max-height: 90vh;
+  max-width: 900px; 
+  width: auto;
+  display: block; 
+  margin: 0 auto; 
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  position: relative;
+  top: -40px;
+}
+.additional-images-container {
+    max-width: 800px; 
+    margin: 30px auto; 
+    text-align: center; 
+    padding: 20px 0;
+}
+
+.additional-images-container h3 {
+    font-family: 'Noto Serif TC', serif; 
+    font-weight: 600; 
+    font-size: 20px; 
+    color: #555; 
+    margin-bottom: 30px; 
+}
+
+.additional-img,
+.additional-media {
+    max-width: 700px; 
+    width: 100%; 
+    height: auto; 
+    display: block; 
+    margin: 15px auto; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.3s; 
+}
+
+/* --- 詳細頁導航按鈕容器 (保持在內容流中) --- */
+.navigation-links {
+    text-align: center;
+    margin: 40px auto;
+}
+
+/* --- 導航按鈕樣式 (調整回固定浮動) --- */
+body.detail-page .nav-btn {
+    position: fixed; /* 關鍵：讓按鈕固定浮動在視窗上 */
+    top: 50%; /* 垂直居中定位點 */
+    transform: translateY(-50%); /* 向上平移自身高度的一半，實現垂直居中 */
+    background-color: rgba(100, 100, 100, 0.6); 
+    color: white; 
+    text-decoration: none; 
+    font-weight: bold; 
+    transition: all 0.3s; 
+    width: 50px; 
+    height: 50px; 
+    line-height: 50px; 
+    border-radius: 50%; 
+    font-size: 24px; 
+    text-align: center;
+    z-index: 10; /* 確保它浮在其他內容之上 */
+}
+body.detail-page .nav-btn:hover { background-color: #333; }
+
+/* 定位左右按鈕 */
+body.detail-page .nav-prev { 
+    left: 20px; /* 距離視窗左側 20px */
+} 
+body.detail-page .nav-next { 
+    right: 20px; /* 距離視窗右側 20px */
+} 
+
+
+/* ===================================================================
+ * 【E. 動畫與 RWD】
+ * =================================================================== */
+
+/* --- 頁面轉場動畫 (通用) --- */
+header, main {
+    opacity: 0;
+    animation: content-fade-in 0.8s ease-out forwards;
+}
+body.is-leaving header, body.is-leaving main {
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+}
+@keyframes content-fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* --- 回到頂部按鈕 (通用) --- */
+#back-to-top-btn {
+    display: none; position: fixed; bottom: 25px; right: 25px; z-index: 99; border: none; outline: none;
+    background-color: rgba(100, 100, 100, 0.7); color: white; padding: 15px; 
+    border-radius: 50%; font-size: 18px; width: 50px; height: 50px; transition: background-color 0.3s;
+}
+#back-to-top-btn:hover { background-color: #555; }
+
+/* --- RWD 調整 --- */
+@media (max-width: 1200px) {
+    body.list-page main { column-count: 5; padding: 0 40px; }
+}
+@media (max-width: 992px) {
+    body.list-page main { column-count: 4; }
+    /* RWD 調整浮動按鈕位置 */
+    body.detail-page .nav-btn { width: 45px; height: 45px; line-height: 45px; font-size: 22px; }
+    body.detail-page .nav-prev { left: 15px; } 
+    body.detail-page .nav-next { right: 15px; } 
+}
+@media (max-width: 768px) {
+    body.list-page main { column-count: 3; padding: 0 15px; }
+    body.detail-page .main-img, body.detail-page video.main-img { top: -20px; }
+    body.detail-page .article-content { font-size: 16px; }
+    .navigation-links { max-width: 100%; padding: 0 15px; }
+    /* RWD 調整浮動按鈕位置 */
+    body.detail-page .nav-btn { width: 40px; height: 40px; line-height: 40px; font-size: 20px; }
+    body.detail-page .nav-prev { left: 10px; } 
+    body.detail-page .nav-next { right: 10px; } 
+}
+@media (max-width: 576px) {
+    body.list-page main { column-count: 2; }
+    nav a { font-size: 16px; padding: 8px 10px; margin: 0 5px; }
+    /* 在極小螢幕上可以選擇隱藏浮動按鈕，或進一步縮小 */
+    body.detail-page .nav-btn { width: 35px; height: 35px; line-height: 35px; font-size: 18px; }
+}
+/* 專門為圖片設定的響應式樣式 */
+
+/* 確保所有圖片的最大寬度都為 100% (不會超過手機螢幕寬度) */
+img {
+    max-width: 100%;
+    height: auto; /* 高度自動調整，保持圖片比例不變形 */
+    box-sizing: border-box; /* 確保 padding 不會導致圖片超出範圍 */
+}
+
+/* 針對內容中的大圖設定（若您有特殊的 class，例如 .content-image） */
+.content-image {
+    max-width: 100%;
+    height: auto;
+}
+
+/* --- 強制圖片和邊界設定，解決手機大圖跑出畫面外 --- */
+* {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100% !important; 
+    height: auto; 
+    display: block; 
+    margin: 0 auto; 
+    padding: 0; 
+}
