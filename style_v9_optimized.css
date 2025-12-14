@@ -355,12 +355,12 @@ img, video, iframe, embed, object {
     body .article-content p, 
     body nav a,
     body {
-        font-size: 40px !important; /* 強制超大字體 */
+        font-size: 30px !important; /* 強制超大字體 */
         line-height: 1.5 !important;
     }
     
     /* 標題 H2/H3 也要同步放大 */
     body h2, body h3 {
-        font-size: 45px !important;
+        font-size: 30px !important;
     }
 }
