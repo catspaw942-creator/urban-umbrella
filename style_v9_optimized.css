@@ -327,3 +327,17 @@ body.is-leaving header, body.is-leaving main {
     /* 在極小螢幕上可以選擇隱藏浮動按鈕，或進一步縮小 */
     body.detail-page .nav-btn { width: 35px; height: 35px; line-height: 35px; font-size: 18px; }
 }
+/* 專門為圖片設定的響應式樣式 */
+
+/* 確保所有圖片的最大寬度都為 100% (不會超過手機螢幕寬度) */
+img {
+    max-width: 100%;
+    height: auto; /* 高度自動調整，保持圖片比例不變形 */
+    box-sizing: border-box; /* 確保 padding 不會導致圖片超出範圍 */
+}
+
+/* 針對內容中的大圖設定（若您有特殊的 class，例如 .content-image） */
+.content-image {
+    max-width: 100%;
+    height: auto;
+}
