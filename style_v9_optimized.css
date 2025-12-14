@@ -345,24 +345,22 @@ img, video, iframe, embed, object {
     margin: 0 auto !important;
 }
 /* ===================================================================
- * 【Z. 最終字體強制覆寫區 (針對 p 標籤和導航欄)】
+ * 【Z. 最終字體縮放補償區 (專門應對 Viewport 衝突)】
  * =================================================================== */
 
 @media screen and (max-width: 768px) {
-    /* 1. 導航欄字體：確保 nav a 能被放大 */
-    body nav a {
-        font-size: 100px !important; 
+    /* 針對手機內文和導航欄，使用極大數值補償整體縮放 */
+    /* 40px 在手機上被縮小後，看起來會是舒服的 18px 左右 */
+    body p, 
+    body .article-content p, 
+    body nav a,
+    body {
+        font-size: 40px !important; /* 強制超大字體 */
+        line-height: 1.5 !important;
     }
-
-    /* 2. 文章段落字體：強制放大所有 p 標籤內的內容 */
-    /* 這會覆蓋所有單純對 p, .article-content, 或 body 設置的樣式 */
-    body p, body .article-content p {
-        font-size: 100px !important; 
-        line-height: 1.63 !important;
-    }
-
-    /* 3. 確保 H1/H2 等標籤不會太小 */
-    body h1, body h2, body h3 {
-        font-size: 3em !important; 
+    
+    /* 標題 H2/H3 也要同步放大 */
+    body h2, body h3 {
+        font-size: 45px !important;
     }
 }
