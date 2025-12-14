@@ -312,14 +312,25 @@ body.is-leaving header, body.is-leaving main {
     body.detail-page .nav-next { right: 15px; } 
 }
 @media (max-width: 768px) {
-    body.list-page main { column-count: 3; padding: 0 15px; }
-    body.detail-page .main-img, body.detail-page video.main-img { top: -20px; }
-    body.detail-page .article-content { font-size: 18px; }
-    .navigation-links { max-width: 100%; padding: 0 15px; }
-    /* RWD 調整浮動按鈕位置 */
-    body.detail-page .nav-btn { width: 40px; height: 40px; line-height: 40px; font-size: 20px; }
-    body.detail-page .nav-prev { left: 10px; } 
-    body.detail-page .nav-next { right: 10px; } 
+    /* --- 內文和文章字體強制放大 --- */
+    body, 
+    body.detail-page .article-content { 
+        font-size: 18px !important; /* 強制所有內文字體放大到 18px */
+    }
+    
+    /* --- 導航欄字體強制放大 (nav a) --- */
+    nav a { 
+        font-size: 20px !important; /* 強制導航欄字體放大到 20px */
+    }
+
+    /* 保持您原本的其他設定不變 */
+  body.list-page main { column-count: 3; padding: 0 15px; }
+  body.detail-page .main-img, body.detail-page video.main-img { top: -20px; }
+  .navigation-links { max-width: 100%; padding: 0 15px; }
+  /* RWD 調整浮動按鈕位置 */
+  body.detail-page .nav-btn { width: 40px; height: 40px; line-height: 40px; font-size: 20px; }
+  body.detail-page .nav-prev { left: 10px; } 
+  body.detail-page .nav-next { right: 10px; } 
 }
 @media (max-width: 576px) {
     body.list-page main { column-count: 2; }
