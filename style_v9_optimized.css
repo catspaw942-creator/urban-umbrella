@@ -195,7 +195,7 @@ body.list-page .card-tags {
 }
 .article-content h1, .article-content h2, .article-content h3 {
      font-family: 'Noto Serif TC', serif;
-     font-weight: 800;
+     font-weight: 700 !important;
 }
 
 
