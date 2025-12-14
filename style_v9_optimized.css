@@ -366,12 +366,10 @@ img {
         font-size: 1.5em !important; 
     }
 }
-/* --- 強制影片和 iFrame 寬度適應螢幕 --- */
-
-video, 
-iframe { 
-    max-width: 100% !important; /* 確保最大寬度不會超過螢幕 */
-    height: auto; /* 高度自動調整，保持比例 */
+/* --- 最終強制影片和 iFrame 及其容器的寬度適應螢幕 --- */
+div, video, iframe, embed, object { 
+    max-width: 100% !important; /* 強制寬度不超過 100% */
+    height: auto; /* 高度自動調整 */
     display: block; 
     margin: 0 auto;
 }
