@@ -1,6 +1,6 @@
 /*
  * ===================================================================
- * style_v9_optimized.css - 終極標準化版本 (最終修復版 - 恢復浮動導航按鈕)
+ * style_v9_optimized.css - 終極標準化版本 (最終修復版 - RWD 整合)
  * ===================================================================
  */
 
@@ -190,12 +190,12 @@ body.list-page .card-tags {
     margin: 20px auto 60px auto;
     line-height: 1.8;
     text-align: left;
-    font-size: 17px; 
+    font-size: 20px; /* <--- 最終修正內文基礎字體 */
     color: #333;
 }
 .article-content h1, .article-content h2, .article-content h3 {
      font-family: 'Noto Serif TC', serif;
-     font-weight: 700 !important;
+     font-weight: 700 !important; /* <--- 最終修正內文 H1/H2/H3 粗體 */
 }
 
 
@@ -314,7 +314,7 @@ body.is-leaving header, body.is-leaving main {
 @media (max-width: 768px) {
     body.list-page main { column-count: 3; padding: 0 15px; }
     body.detail-page .main-img, body.detail-page video.main-img { top: -20px; }
-    body.detail-page .article-content { font-size: 16px; }
+    body.detail-page .article-content { font-size: 18px; } /* <--- 最終修正手機內文基礎字體 */
     .navigation-links { max-width: 100%; padding: 0 15px; }
     /* RWD 調整浮動按鈕位置 */
     body.detail-page .nav-btn { width: 40px; height: 40px; line-height: 40px; font-size: 20px; }
@@ -323,7 +323,7 @@ body.is-leaving header, body.is-leaving main {
 }
 @media (max-width: 576px) {
     body.list-page main { column-count: 2; }
-    nav a { font-size: 16px; padding: 8px 10px; margin: 0 5px; }
+    nav a { font-size: 20px; padding: 8px 10px; margin: 0 5px; } /* <--- 最終修正手機導航字體 */
     /* 在極小螢幕上可以選擇隱藏浮動按鈕，或進一步縮小 */
     body.detail-page .nav-btn { width: 35px; height: 35px; line-height: 35px; font-size: 18px; }
 }
@@ -345,22 +345,5 @@ img, video, iframe, embed, object {
     margin: 0 auto !important;
 }
 /* ===================================================================
- * 【Z. 最終字體縮放補償區 (專門應對 Viewport 衝突)】
+ * 【Z. 已移除 Viewport 補償區 (字體已修正到 RWD 區)】
  * =================================================================== */
-
-@media screen and (max-width: 768px) {
-    /* 針對手機內文和導航欄，使用極大數值補償整體縮放 */
-    /* 40px 在手機上被縮小後，看起來會是舒服的 18px 左右 */
-    body p, 
-    body .article-content p, 
-    body nav a,
-    body {
-        font-size: 30px !important; /* 強制超大字體 */
-        line-height: 1.5 !important;
-    }
-    
-    /* 標題 H2/H3 也要同步放大 */
-    body h2, body h3 {
-        font-size: 40px !important;
-    }
-}
