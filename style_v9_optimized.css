@@ -344,25 +344,3 @@ img, video, iframe, embed, object {
     display: block !important; 
     margin: 0 auto !important;
 }
-/* ===================================================================
- * 【Z. 最終字體強制覆寫區 (針對 p 標籤和導航欄)】
- * =================================================================== */
-
-@media screen and (max-width: 768px) {
-    /* 1. 導航欄字體：確保 nav a 能被放大 */
-    body nav a {
-        font-size: 100px !important; 
-    }
-
-    /* 2. 文章段落字體：強制放大所有 p 標籤內的內容 */
-    /* 這會覆蓋所有單純對 p, .article-content, 或 body 設置的樣式 */
-    body p, body .article-content p {
-        font-size: 100px !important; 
-        line-height: 1.63 !important;
-    }
-
-    /* 3. 確保 H1/H2 等標籤不會太小 */
-    body h1, body h2, body h3 {
-        font-size: 3em !important; 
-    }
-}
