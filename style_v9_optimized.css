@@ -340,4 +340,17 @@ img {
 .content-image {
     max-width: 100%;
     height: auto;
+
+}
+/* --- 強制圖片和邊界設定，解決手機大圖跑出畫面外 --- */
+* {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100% !important; 
+    height: auto; 
+    display: block; 
+    margin: 0 auto; 
+    padding: 0; 
 }
