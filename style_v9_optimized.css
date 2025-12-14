@@ -327,12 +327,20 @@ body.is-leaving header, body.is-leaving main {
     /* 在極小螢幕上可以選擇隱藏浮動按鈕，或進一步縮小 */
     body.detail-page .nav-btn { width: 35px; height: 35px; line-height: 35px; font-size: 18px; }
 }
-/* --- 最終強制影片和 iFrame 及其容器的寬度適應螢幕 --- */
+/* ===================================================================
+ * 【Z. 最終強制 RWD 覆寫區】
+ * =================================================================== */
 
-/* 確保所有影片、iFrame 以及常見的內容容器都能適應螢幕 */
-div, video, iframe, embed, object { 
-    max-width: 100% !important; /* 強制寬度不超過 100% */
-    height: auto; /* 高度自動調整 */
-    display: block; 
-    margin: 0 auto;
+/* 1. 全域寬度邊界設定：防止 padding/border 造成溢出 */
+* {
+    box-sizing: border-box !important;
+}
+
+/* 2. 針對所有會溢出的內容強制設定 100% 寬度 */
+/* 包含所有圖片、影片標籤、嵌入的 iFrame 和可能的內容區塊 */
+img, video, iframe, embed, object {
+    max-width: 100% !important; 
+    height: auto !important; 
+    display: block !important; 
+    margin: 0 auto !important;
 }
