@@ -354,12 +354,3 @@ img {
     margin: 0 auto; 
     padding: 0; 
 }
-
-/* --- 最終強制影片和 iFrame 的寬度適應螢幕 --- */
-/* 移除 div 避免影響 PC 網頁版面，只針對媒體元素強制設定 */
-video, iframe, embed, object { 
-    max-width: 100% !important; /* 強制寬度不超過 100% */
-    height: auto; /* 高度自動調整 */
-    display: block; 
-    margin: 0 auto;
-}
