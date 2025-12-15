@@ -1,6 +1,6 @@
 /**
  * ===================================================================
- * generateWebsite.js - 內容生成與網站調度 (最終修化版)
+ * generateWebsite.js - 內容生成與網站調度 (最終修化版 - 整合 LOGO 副標題)
  * ===================================================================
  */
 
@@ -10,13 +10,27 @@ const path = require('path');
 // ===================================================================
 // 【A. 配置數據】
 // ===================================================================
+// generateWebsite.js (節錄)
+
+// --- 所有網站分類的設定 ---
 const categories = {
-    'works': { title: '作品', dir: 'works' },       
-    'articles': { title: '文章', dir: 'articles' }, 
-    'cos': { title: 'COS道具', dir: 'cos' },  
-    'video': { title: '影片', dir: 'video' },      
-    'daily': { title: '日常', dir: 'daily' },
+    // 列表頁和詳細頁 H2 隨頁標題將顯示 'CoNeCoLin&NekoIcchou：Works'
+    'works': { title: 'CoNeCoLin&NekoIcchou：Works', dir: 'works' }, 
+    
+    // 列表頁和詳細頁 H2 隨頁標題將顯示 'CoNeCoLin&NekoIcchou：Articles'
+    'articles': { title: 'CoNeCoLin&NekoIcchou：Articles', dir: 'articles' }, 
+    
+    // 列表頁和詳細頁 H2 隨頁標題將顯示 'CoNeCoLin&NekoIcchou：CosProps'
+    'cos': { title: 'CoNeCoLin&NekoIcchou：CosProps', dir: 'cos' }, 
+    
+    // 列表頁和詳細頁 H2 隨頁標題將顯示 'CoNeCoLin&NekoIcchou：Videos'
+    'video': { title: 'CoNeCoLin&NekoIcchou：Videos', dir: 'video' }, 
+    
+    // 列表頁和詳細頁 H2 隨頁標題將顯示 'CoNeCoLin&NekoIcchou：Life'
+    'daily': { title: 'CoNeCoLin&NekoIcchou：Life', dir: 'daily' },
 };
+
+// ... 後續程式碼不變 ...
 
 const ALLOWED_MEDIA_EXTENSIONS = ['.mp4', '.jpg', '.png', '.jpeg', '.webp'];
 
@@ -71,10 +85,10 @@ function escapeHtml(text) {
 function parseDetailTxt(txtContent, fallbackName, postDate = '') {
     const rawLines = txtContent.split(/\r?\n/);
     
-    let txtHtml = '',              
-        h1Content = '',            
-        h2Content = '',            
-        altText = fallbackName,    
+    let txtHtml = '', 
+        h1Content = '', 
+        h2Content = '', 
+        altText = fallbackName, 
         linkHtml = '';
     
     // 過濾出需要處理的行
@@ -96,13 +110,13 @@ function parseDetailTxt(txtContent, fallbackName, postDate = '') {
         
         // 1. 處理第一行 (H1 標題)
         if (index === 0) {
-            h1Content = trimmedLine || fallbackName;                         
-            txtHtml += `<h1>${h1Content}</h1>\n`;          
+            h1Content = trimmedLine || fallbackName; 
+            txtHtml += `<h1>${h1Content}</h1>\n`; 
         
         // 2. 處理第二行 (H2 標題 或 貼文日期)
         } else if (index === 1) {
             if (trimmedLine) {
-                h2Content = trimmedLine;                         
+                h2Content = trimmedLine; 
             } else if (postDate) {
                 h2Content = postDate;
             }
@@ -122,7 +136,7 @@ function parseDetailTxt(txtContent, fallbackName, postDate = '') {
                 const [url, text] = urlPart.includes('|') ? urlPart.split('|').map(s => s.trim()) : [urlPart, urlPart];
                 linkHtml = `<p><a href="${url}" target="_blank">${text}</a></p>`;
             } else {
-                txtHtml += `<p>${trimmedLine}</p>\n`;            
+                txtHtml += `<p>${trimmedLine}</p>\n`; 
             }
         }
     });
@@ -163,7 +177,7 @@ async function loadFileInfo(cat) {
         
         let file = '', mainMediaFile = '', sortCode = 'ZZZZZ', postDate = '';
         let processedTxtContent = '';
-        let h1Title = name, description = '無說明', altText = name, linkHtml = '';                           
+        let h1Title = name, description = '無說明', altText = name, linkHtml = ''; 
         
         // 1. 偵測主媒體檔案 (mainMediaFile)
         for (const ext of ALLOWED_MEDIA_EXTENSIONS) {
@@ -230,7 +244,7 @@ async function loadFileInfo(cat) {
             h1Title = parsed.h1Content || h1Title;
             description = parsed.description || description; 
             altText = parsed.altText || altText;
-            linkHtml = parsed.linkHtml || linkHtml;          
+            linkHtml = parsed.linkHtml || linkHtml; 
             
             allFileInfo.push({ 
                 sortCode, 
@@ -372,8 +386,17 @@ async function cleanUpOldWebsite() {
 /**
  * @description 核心替換函數 (替換 layout.html 模板中的標記)
  */
-async function replaceAndWrite(template, outputPath, title, categoryTitle, mainContent, bodyClass, prefix) {
+async function replaceAndWrite(template, outputPath, title, categoryTitle, mainContent, bodyClass, prefix, pageType) {
     const cssPrefix = prefix; 
+
+    // --- 【新增邏輯：處理 LOGO 副標題 $LOGO_SUBTITLE$】 ---
+    const isHomePage = (pageType === 'index' || pageType === 'about');
+    let logoSubtitleHtml = '';
+    
+    if (isHomePage) {
+        logoSubtitleHtml = '<div class="logo-subtitle">CoNeCoLin&NekoIcchou</div>';
+    }
+    // ----------------------------------------------------
 
     let finalHtml = template
         .replace(/\$TITLE\$/g, title)
@@ -385,6 +408,9 @@ async function replaceAndWrite(template, outputPath, title, categoryTitle, mainC
     // 處理 H2 標題替換 ($CATEGORY_NAME$)
     const categoryNameHtml = categoryTitle ? `<h2 class="page-subtitle">${categoryTitle}</h2>` : '';
     finalHtml = finalHtml.replace(/\$CATEGORY_NAME\$/g, categoryNameHtml);
+    
+    // 替換 $LOGO_SUBTITLE$
+    finalHtml = finalHtml.replace(/\$LOGO_SUBTITLE\$/g, logoSubtitleHtml);
 
     await fs.writeFile(outputPath, finalHtml, 'utf8');
 }
@@ -410,13 +436,13 @@ async function generateWebsite() {
     // --- 1. 處理主頁 (index.html) ---
     console.log(`\n--- 正在處理網站主頁 (index.html) ---`);
     await replaceAndWrite(layoutTemplate, path.join(__dirname, 'index.html'), 
-        '主頁', '', indexContent, 'index-page', ''); 
+        '主頁', '', indexContent, 'index-page', '', 'index'); // <-- 新增 pageType 參數
     console.log(`✅ 已生成 index.html 主頁`);
     
     // --- 2. 處理關於我們頁面 (about.html) ---
     console.log(`\n--- 正在處理網站關於我們頁 (about.html) ---`);
     await replaceAndWrite(layoutTemplate, path.join(__dirname, 'about.html'), 
-        '關於我們', '', aboutUsContent, 'index-page', ''); 
+        '關於我們', '', aboutUsContent, 'index-page', '', 'about'); // <-- 新增 pageType 參數
     console.log(`✅ 已生成 about.html 關於我們頁`);
 
 
@@ -430,7 +456,7 @@ async function generateWebsite() {
             console.log(`- ${cat.title} 分類沒有內容，將生成空的列表頁面。`);
             const emptyContent = `<div class="empty-message" style="padding: 50px; text-align: center;"><h2>目前這個分類沒有任何內容。</h2><p>請將內容檔案放入 ${cat.dir}/images 資料夾中。</p></div>`;
             await replaceAndWrite(layoutTemplate, path.join(__dirname, `${catName}.html`), 
-                `${cat.title} 列表`, cat.title, emptyContent, 'list-page', rootPrefix);
+                `${cat.title} 列表`, cat.title, emptyContent, 'list-page', rootPrefix, 'list'); // <-- 新增 pageType 參數
             console.log(`✅ 已生成 ${catName}.html 列表頁`);
             continue;
         }
@@ -439,7 +465,7 @@ async function generateWebsite() {
         console.log(`\n--- 正在處理分類：${cat.title} ---`);
         const cardsHtml = generateListCards(allFileInfo, catName);
         await replaceAndWrite(layoutTemplate, path.join(__dirname, `${catName}.html`), 
-            `${cat.title} 列表`, cat.title, cardsHtml, 'list-page', rootPrefix);
+            `${cat.title} 列表`, cat.title, cardsHtml, 'list-page', rootPrefix, 'list'); // <-- 新增 pageType 參數
         console.log(`✅ 已生成 ${catName}.html 列表頁`);
 
         // --- 3.2. 詳細頁生成 ---
@@ -450,7 +476,7 @@ async function generateWebsite() {
             const detailPath = path.join(__dirname, cat.dir, `${info.name}.html`);
             
             await replaceAndWrite(layoutTemplate, detailPath, 
-                info.h1Title, cat.title, detailContent, 'detail-page', detailPrefix);
+                info.h1Title, cat.title, detailContent, 'detail-page', detailPrefix, 'detail'); // <-- 新增 pageType 參數
             console.log(`✅ 已生成 ${cat.dir}/${info.name}.html`);
         }
     }

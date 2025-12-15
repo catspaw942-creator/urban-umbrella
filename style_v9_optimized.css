@@ -79,7 +79,27 @@ h1 {
     font-size: 30px;
     font-weight: 600;
 }
-
+/* 專門調整列表頁和詳細頁 (分頁) H1 標題大小 */
+body.list-page h1, 
+body.detail-page h1 {
+    font-size: 16px; /* <--- 針對分頁 (List/Detail) 縮小為 30px */
+}
+/* 專門調整列表頁和詳細頁 (分頁) 的 LOGO 尺寸 */
+body.list-page #logo, 
+body.detail-page #logo {
+    width: 200px; /* <--- 將分頁 LOGO 加大到 200px (適用於 PC) */
+}
+/* --- LOGO 下方小副標題樣式 (主頁/關於我們頁專用) --- */
+.logo-subtitle {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 20px; /* PC 上顯示 20px */
+    font-weight: 400;
+    color: #444;
+    margin-top: 0px; /* 與 LOGO 圖片保持間距 */
+    margin-bottom: 10px; /* 與導航列保持間距 */
+    letter-spacing: 5px;
+    text-align: center; /* 確保文字居中 */
+}
 /* ===== 首頁型頁面（主頁 + 關於我們）尺寸控制 ===== */
 body.index-page #logo {
     width: 640px;
@@ -89,8 +109,8 @@ body.index-page #logo {
 
 /* 列表頁/詳細頁的 H2 樣式 (副標題) */
 body.list-page h2, body.detail-page h2, h2.page-subtitle { 
-    margin: 5px 0 20px 0;
-    font-size: 18px;
+    margin: 0px 0 5px 0;
+    font-size: 16px;
     color: #666;
     font-weight: 600;
     letter-spacing: 3px;
@@ -139,7 +159,7 @@ main a {
 /* --- 列表頁瀑布流 (通用) --- */
 body.list-page main {
     padding: 0 80px;      
-    column-gap: 15px;
+    column-gap: 10px;
     column-count: 6;      
 }
 
@@ -197,7 +217,19 @@ body.list-page .card-tags {
      font-family: 'Noto Serif TC', serif;
      font-weight: 700 !important; /* <--- 最終修正內文 H1/H2/H3 粗體 */
 }
-
+/* --- 文章內容區塊 H1/H2 修正 (PC端/通用) --- */
+.article-content h1 {
+    font-size: 29px !important; /* 強制 H1 標題為 32px */
+    margin-bottom: 15px;
+    margin-top: 20px;
+    font-weight: 700 !important; /* 確保夠粗 */
+}
+.article-content h2 {
+    font-size: 28px !important; /* 強制 H2 標題為 24px */
+    margin-bottom: 10px;
+    margin-top: 15px;
+    font-weight: 700 !important; /* 確保夠粗 */
+}
 
 /* --- 詳細頁主媒體和輔助媒體樣式 (通用) --- */
 body.detail-page .main-img,
